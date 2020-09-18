@@ -1,0 +1,75 @@
+@media only screen and (max-width: 768px) {
+    .mainconte {
+        height: auto !important;
+    }
+    .pompaimg {
+        background-image: none !important;
+        height: auto !important;
+        padding: 0 calc(15px + 2%) !important;
+    }
+    .horidivider {
+        display: none !important;
+    }
+    .enginetags, .presuretags, .flowMetertag, .pumpVibrationTag {
+        position: initial !important;
+        flex-direction: column;
+        height: auto !important;
+        width: 100% !important;
+    }
+    .tagitem > .row {
+        display: flex !important;
+    }
+    .tagitem .row div:nth-child(1) {
+        text-align: left !important;
+    }
+    .tagitem .row div:nth-child(1) span {
+        background-color: transparent !important;
+        color: #333 !important;
+    }
+    .tagitem .row div {
+        text-align: right !important;
+    }
+    .tagitem .row {
+        padding: 2px 0 !important;
+        border-top: 1px solid #f5f5f5;
+    }
+    .tagitem .row:nth-child(1) {
+        border: none !important;
+    }
+    .pompaimg hr {
+        display: none !important;
+    }
+    .analyzeList .card {
+        width: 46% !important;
+        display: inline-flex;
+        margin: 2% !important;
+    }
+    .analyzeList .card .card-header {
+        min-height: 80px !important;
+        display: flex !important;
+        align-content: center !important;
+        justify-content: center !important;
+        font-size: 15px !important;
+        line-height: 18px !important;
+    }
+    .analyzeList .card .card-body {
+        padding: 12px !important;
+    }
+    .analyzeList {
+        height: auto !important;
+        margin-bottom: 10px !important;
+        margin-top: 16px !important;
+    }
+    .navbar-collapse {
+        display: block !important;
+        margin-top: 10px !important;
+    }
+    .navbar-nav {
+        display: flex;
+        justify-content: space-between !important;
+        flex-direction: row !important;
+    }
+    .navbar-nav li a{
+        font-size: 14px !important;
+    }
+}
