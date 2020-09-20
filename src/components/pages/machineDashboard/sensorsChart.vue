@@ -60,7 +60,7 @@ export default {
     onMessageArrived(message) {
       try {
         var data = JSON.parse(message.payloadString);
-        if (this.tagDataArr.length < 60) {
+        if (this.tagDataArr.length < 30) {
           this.tagDataArr.push(data.values[0].v);
           var dateTime = new Date(data.values[0].t).toISOString();
           this.labelArr.push(dateTime);
