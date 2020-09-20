@@ -18,11 +18,16 @@ export default {
   },
   methods: {
     onConnect() {
-      this.client.subscribe(this.subscribedTopic);
+      this.client.subscribe("iotgateway/" + this.subscribedTopic);
     },
     onMessageArrived(message) {
-      
-      /*
+     try {
+        var data = JSON.parse(message.payloadString);
+      if (this.tagDataArr.length < 60) {
+        this.tagDataArr.push(data.values[0].v);
+        var dateTime= new Date(data.values[0].t).toISOString();
+        this.labelArr.push(dateTime);
+      }
       var myCanvas = document.getElementById("myChart" + this.subscribedTopic);
       var ctx = myCanvas.getContext("2d");
       if (this.chart != null) {
@@ -36,12 +41,11 @@ export default {
           labels: this.labelArr,
           datasets: [
             {
-              label: this.chartLabel,
+              label: this.subscribedTopic.toUpperCase(),
               backgroundColor: "rgb(255, 99, 132)",
               borderColor: "rgb(255, 99, 132)",
               fill: false,
-              data: this.tagDataArr,
-              yAxisID: "y-axis-1",
+              data: this.tagDataArr
             },
           ],
         },
@@ -52,22 +56,26 @@ export default {
             duration: 0, // general animation time
           },
           scales: {
-            yAxes: [
-              {
-                type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: "left",
-                id: "y-axis-1",
-              },
-            ],
+            xAxes: [{
+                ticks: {
+                    display: false //this will remove only the label
+                }
+            }]
+        },
             // grid line settings
             gridLines: {
               drawOnChartArea: false, // only want the grid lines for one axis to show up
             },
           },
-        },
-      });
-      */
+        });
+        if(this.tagDataArr.length==30){
+          this.tagDataArr.shift();
+           this.labelArr.shift();
+        }
+     } catch (error) {
+       console.log(error);
+     }
+     
     },
   },
   beforeMount: function () {

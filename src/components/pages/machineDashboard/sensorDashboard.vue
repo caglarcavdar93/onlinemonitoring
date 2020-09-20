@@ -1,9 +1,10 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <p class="text-center font-weight-bold py-2">{{tagLabel}}</p>
+ <div class="container">
+    <h3>Machine1</h3>
+    <hr />
+    <div class="row">
+      <app-sensor-chart v-for="(topic, index) in this.$store.state.topics" :subscribedTopic="topic" :key="'sensorChart'+index"></app-sensor-chart>
     </div>
-      <app-sensor-chart></app-sensor-chart>
   </div>
 </template>
 
@@ -17,14 +18,17 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  margin-top: 16px;
-  padding: 5px;
-  background-color: #efebe9;
-  padding: 0;
-  border: 1px solid #f9f9f9;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 6px;
+div.container {
+  margin-top: 30px;
+  padding: 20px 40px;
+  background-color: lightgoldenrodyellow;
+  border: 1px solid #666;
+
+  width: 100%;
+}
+div.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 </style>

@@ -5,6 +5,7 @@ import router from './router/router'
 import store from './store/store'
 import '../resp.css'
 import Paho from 'paho-mqtt'
+import  'chart.js'
 
 Vue.prototype.$Paho=Paho;
 new Vue({
