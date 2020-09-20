@@ -10,29 +10,30 @@
 </template>
 
 <script>
+
 export default {
   props: ["topicName"],
   data() {
     return {
       sensorName: "Sensor",
-      tagValue: "3,15",
+      tagValue: "0",
       client: null,
     };
   },
   methods: {
     onConnect() {
-      this.client.subscribe("iotgateway" + this.topic);
+      this.client.subscribe("iotgateway/" + this.topicName);
     },
     onMessageArrived(message) {
-      if (message.DestinationName == this.topic) {
-        this.tagValue = message.payload["v"];
-      }
+      var data=JSON.parse(message.payloadString);
+      this.tagValue=data.values[0].v;
     },
   },
   beforeMount() {
-    //this.client = new Paho.Client("localhost", 1883, "");
-    //this.client.OnMessageArrived = onMessageArrived;
-    //this.client.connect({ onSuccess: onConnect });
+    this.sensorName= this.topicName.toUpperCase();
+    this.client = new this.$Paho.Client("localhost", 9001,"");
+    this.client.onMessageArrived=this.onMessageArrived;
+    this.client.connect({cleanSession:true,onSuccess: this.onConnect });
   },
 };
 </script>

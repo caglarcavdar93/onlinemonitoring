@@ -3,7 +3,7 @@
     <h3>Machine1</h3>
     <hr />
     <div class="row">
-      <app-sensor-card v-for="(topic, index) in topics" :topicName="topic" :key="index"></app-sensor-card>
+      <app-sensor-card v-for="(topic, index) in this.$store.state.topics" :topicName="topic" :key="index"></app-sensor-card>
     </div>
   </div>
 </template>
@@ -16,9 +16,9 @@ export default {
   },
   data() {
     return {
-      topics: ["sensor1", "sensor2"],
+      //topics:
     };
-  },
+  }
 };
 </script>
 

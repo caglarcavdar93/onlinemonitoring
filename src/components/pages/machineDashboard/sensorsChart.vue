@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-sm-8 pb-3">
+  <div class="row">
     <canvas :id="'myChart'+this.subscribedTopic"></canvas>
   </div>
 </template>
@@ -21,9 +21,13 @@ export default {
       this.client.subscribe(this.subscribedTopic);
     },
     onMessageArrived(message) {
+      
+      /*
       var myCanvas = document.getElementById("myChart" + this.subscribedTopic);
       var ctx = myCanvas.getContext("2d");
-
+      if (this.chart != null) {
+        this.chart.destroy();
+      }
       this.chart = new Chart(ctx, {
         // The type of chart we want to create
         type: "line",
@@ -63,44 +67,18 @@ export default {
           },
         },
       });
-    },
-    onFailure() {
-      alert("Connection Lost!");
-    },
-    onConnectAnomalyResult() {
-      this.anomalyResultClient.subscribe(
-        this.anomalyResultTopic + "AnomalyResult"
-      );
-    },
-    onFailureAnomalyResult() {
-      alert("Connection Lost!");
-    },
-    onMessageArrivedAnomaly(message) {
-      try {
-        this.anomalyResultArr = JSON.parse(message.payloadString);
-      } catch (error) {
-        console.log(error);
-      }
+      */
     },
   },
   beforeMount: function () {
-    this.$store.commit("SetTagLabel", this.subscribedTopic);
-    this.chartLabel = this.$store.getters.GetTagLabel;
-    this.client = new this.Paho.Client("10.16.16.139", 9001, "");
+    this.client = new this.$Paho.Client("localhost", 9001, "");
     this.client.onMessageArrived = this.onMessageArrived;
     this.client.connect({
+      cleanSession: true,
       onSuccess: this.onConnect,
-      onFailure: this.onFailure,
-    });
-    this.anomalyResultClient = new this.Paho.Client("10.16.16.139", 9001, "");
-    this.anomalyResultClient.onMessageArrived = this.onMessageArrivedAnomaly;
-    this.anomalyResultClient.connect({
-      onSuccess: this.onConnectAnomalyResult,
-      onFailure: this.onFailureAnomalyResult,
     });
   },
   beforeDestroy: function () {
-    this.anomalyResultClient.disconnect();
     this.client.disconnect();
   },
 };

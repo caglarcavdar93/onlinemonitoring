@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import sensors from '../components/pages/machineTrack/machineTrack.vue'
-import dashBoard from '../components/pages/machineDashboard/sensorsDashboard'
+import sensors from '../components/pages/machineTrack/machineTrack'
+import dashBoard from '../components/pages/machineDashboard/sensorDashboard'
 Vue.use(VueRouter);
 
 const routes = [{
     path:'/',
     component:sensors
 },{
-    path:'sensorsDashboard',
+    path:'/sensorsDashboard',
     component:dashBoard
 },{
     path:'*',
