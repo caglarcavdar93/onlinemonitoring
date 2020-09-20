@@ -5,7 +5,7 @@
 To read data from KepServerEX you obviously need to download [KepServerEX](https://www.kepware.com/en-us/content-gates/ex-demo-download-content-gate/?product=d2239b8c-36f2-4d07-8fbd-e223d0e26bbf&gate=8a5e8dd5-6edf-4d68-aa36-72f97b11e612). You also need an mqtt server. You can download [Mosquitto](https://mosquitto.org/download/) and run it locally.
 
 ## Mosquitto MQTT
-> After you download Mosquitto you need to do change its configuration to read data over web. The conf file is pretty much self explanatory.
+> After you download Mosquitto you need to change its configuration to read data over web. The conf file is pretty much self explanatory.
 - Go to Program Files\mosquitto edit mosquitto.conf with any notepad program.
 - Add these lines:
   - port 1883
@@ -37,12 +37,12 @@ To read data from KepServerEX you obviously need to download [KepServerEX](https
 - Change Address section to ***RANDOM(1000,15,55)***
 - Right click to ***IoT Gateway*** and click ***Add New Agent***. If you don't see IoT Gateway section, select ***View>IoT Gateway***, it will show up.
 - Change type to ***MQTT Client*** and click ***Next***
-- Change Topic to ***iotgateway/sensor1*** and ***Rate(ms)*** to ***1000***. Click ***Next***.
+- Change ***Topic*** to ***iotgateway/sensor1*** and ***Rate(ms)*** to ***1000***. Click ***Next***.
 - Leave the Credentials section blank, click ***Finish***.
 - Click ***Add IoT Items***. From the dialog, select the device that you created under the channel, select ***Sensor1*** and apply.
-- Add another agent for ***Sensor2*** with applying same steps.
+- Add another agent for ***Sensor2*** with applying the same steps.
 
-****It is good to notify you that KepServer has a licence fee but you can use demo version. Even if you have licence of KepServer, adding IoT Agent is an extra feature which means you also have to pay for that. I used KepServer to simulate PLC as if I am reading a sensor value from PLC but you don't have to do that you can create an application that publishes a random number to an mqtt topic.***
+****It is good to notify you that KepServer has a licence fee but you can use the demo version. Even if you have licence of KepServer, adding IoT Agent is an extra feature which means you also have to pay for that. I used KepServer to simulate PLC as if I am reading a sensor value from PLC but you don't have to do that you can create an application that publishes a random number to an mqtt topic.***
 
 ## Build Setup
 
