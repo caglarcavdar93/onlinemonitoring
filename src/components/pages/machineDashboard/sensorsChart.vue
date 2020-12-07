@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <canvas :id="'myChart'+this.subscribedTopic"></canvas>
+    <canvas :ref="'myChart'+this.subscribedTopic"></canvas>
   </div>
 </template>
 
@@ -84,7 +84,7 @@ export default {
       cleanSession: true,
       onSuccess: this.onConnect,
     });
-    var myCanvas = document.getElementById("myChart" + this.subscribedTopic);
+    var myCanvas = this.$refs["myChart" + this.subscribedTopic];
     var ctx = myCanvas.getContext("2d");
     this.chart = new Chart(ctx, this.chartConfig);
   },
